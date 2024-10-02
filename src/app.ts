@@ -1,23 +1,19 @@
 // server.js
 import express from 'express';
-import mongoose from 'mongoose';
 
 const app = express();
+const router = express.Router();
 const PORT = process.env.PORT || 5000;
 
-// Middleware
-app.use(express.json());
+// Basic route using the router
+// router.get('/', (_req, res) => {
+//     res.send('Hello World!');
+// });
 
-// MongoDB connection
-mongoose.connect('mongodb://localhost:27017/mydatabase', { ConnectOptions: true, useUnifiedTopology: true })
-    .then(() => console.log('MongoDB connected'))
-    .catch(err => console.error(err));
+// Use the router in the app
+app.use('/', router);
 
-// Basic route
-app.get('/', (req, res) => {
-    res.send('Hello World!');
-});
-
+// Start the server
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });

@@ -1,20 +1,29 @@
 {
   "name": "blog-backend",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "src/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node  ./src/app.ts",
+    "dev": "nodemon -r dotenv/config ./src/app.ts",
+    "build": "tsc -p ."
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "dotenv": "^16.4.5",
     "express": "^4.21.0",
+    "mongodb": "^6.9.0",
     "mongoose": "^8.7.0"
   },
   "devDependencies": {
+    "@types/express": "^5.0.0",
     "@types/node": "^22.7.4",
-    "nodemon": "^3.1.7"
+    "install": "^0.13.0",
+    "nodemon": "^3.1.7",
+    "npm": "^10.8.3",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0"
   }
 }
