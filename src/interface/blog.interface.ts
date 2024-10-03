@@ -2,11 +2,13 @@ import { Types } from "mongoose";
 // db
 // ###########################
 
-export interface IBlog {
+export interface IBlogDB {
   title: string;
   content: string;
+
   authorId: Types.ObjectId;
   tags: string[];
+  slug: string;
   isPublished: boolean;
   isDeleted: boolean;
   createdBy: Types.ObjectId;
@@ -18,6 +20,7 @@ export interface IBlog {
 export interface IBlogCreateDB {
   title: string;
   content: string;
+  slug: string;
   authorId: Types.ObjectId;
   tags: string[];
   isPublished: boolean;
@@ -31,6 +34,7 @@ export interface IBlogCreateDB {
 export interface IBlogUpdateDB {
   title: string;
   content: string;
+  slug: string;
   authorId: Types.ObjectId;
   tags: string[];
   updatedBy: Types.ObjectId;
@@ -43,6 +47,7 @@ export interface IBlogResponse {
   _id: string;
   title: string;
   content: string;
+  slug: string;
   authorId: string;
   tags: string[];
   isPublished: boolean;
@@ -51,4 +56,23 @@ export interface IBlogResponse {
   updatedBy: string;
   createdAt: Date;
   updatedAt: Date;
+}
+
+// Request
+//####################
+
+export interface IBlogCreateRequest {
+  title: string;
+  content: string;
+  tags: string[];
+}
+export interface IBlogUpdateRequest{
+  title: string;
+  content: string;
+  tags: string[];
+  slug:string;
+}
+
+export interface IBlogDeleteRequest{
+  _id:string;
 }
