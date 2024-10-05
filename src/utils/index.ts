@@ -24,8 +24,15 @@ export enum HttpStatusCodes {
     GATEWAY_TIMEOUT = 504,
   }
   
+const toString=(str:any)=>{
+      const result=str+"";
+      return result;
+}
+
+
 
 export default{
     SYSTEM_API_KEY,
-    HttpStatusCodes
+    HttpStatusCodes,
+    toString
 }

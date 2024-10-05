@@ -1,8 +1,9 @@
 // server.js
 import express from 'express';
+import routes from './routes';
 
 const app = express();
-const router = express.Router();
+// const router = express.Router();
 const PORT = process.env.PORT || 5000;
 
 // Basic route using the router
@@ -11,7 +12,7 @@ const PORT = process.env.PORT || 5000;
 // });
 
 // Use the router in the app
-app.use('/', router);
+app.use('/Blog',routes.BlogRoute );
 
 // Start the server
 app.listen(PORT, () => {

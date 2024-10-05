@@ -1,64 +1,61 @@
-import { Model, Document, FilterQuery, UpdateQuery, ObjectId, PipelineStage } from 'mongoose';
 
-export class MongooseOperations<T extends Document> {
-  private model: Model<T>;
 
-  constructor(model: Model<T>) {
-    this.model = model;
+import mongoose, { Model, Schema } from "mongoose";
+import DATABASE from "../database/database";
+
+export default class MODEL {
+  protected db: DATABASE | undefined;
+  protected connection: mongoose.Connection | undefined;
+  protected collectionName: string | undefined;
+  protected dbModel: Model<any, {}, {}> ;
+
+  constructor(collectionName:string,schema:Schema) {
+    this.db=new DATABASE();
+    this.collectionName=collectionName;
+    this.dbModel=mongoose.model(collectionName,schema);
   }
 
-  // Create a new document
-  async create(data: Partial<T>): Promise<T> {
-    try {
-      const newDocument = new this.model(data);
-      return await newDocument.save();
-    } catch (error) {
-      throw new Error(`Error creating document: ${error}`);
-    }
+  // init()
+  async init(){
+    await this.db?.init();
+    this.connection=this.db?.getConnection();
   }
-
-  // Find documents with optional filter, returning lean documents
-  async find(filter: FilterQuery<T> = {}): Promise<Document<T>[]> {
-    try {
-      return await this.model.find(filter).lean().exec();
-    } catch (error) {
-      throw new Error(`Error finding documents: ${error}`);
-    }
+  // get dbModel
+  getDBModel(){
+    return this.dbModel;
   }
-
-  // Find one document by filter
-  async findOne(filter: FilterQuery<T>): Promise<T | null> {
-    try {
-      return await this.model.findOne(filter).exec();
-    } catch (error) {
-      throw new Error(`Error finding document: ${error}`);
-    }
+  // find one
+  async findOne(query:any,projection?:any){
+    if(!projection)projection={};
+    return await this.dbModel?.findOne(query,projection);
   }
-
-  // Update one document by filter and data
-  async updateOne(filter: FilterQuery<T>, updateData: UpdateQuery<T>): Promise<T | null> {
-    try {
-      return await this.model.findOneAndUpdate(filter, updateData, { new: true }).exec();
-    } catch (error) {
-      throw new Error(`Error updating document: ${error}`);
-    }
+  // find 
+  async find(query:any,projection?:any){
+    if(!projection)projection={};
+    return await this.dbModel?.findOne(query,projection);
   }
-
-  // Delete one document by filter
-  async deleteOne(filter: FilterQuery<T>): Promise<T | null> {
-    try {
-      return await this.model.findOneAndDelete(filter).exec();
-    } catch (error) {
-      throw new Error(`Error deleting document: ${error}`);
-    }
+  // create
+  async create(data:any){
+    let document=new this.dbModel(data);
+    return await document.save(document);
   }
-
-  // Aggregation example
-  async aggregate(pipeline: PipelineStage[]): Promise<any[]> {
-    try {
-      return await this.model.aggregate(pipeline).exec();
-    } catch (error) {
-      throw new Error(`Error running aggregation: ${error}`);
-    }
+  // update
+  async update(_id:string,data:any){
+    return await this.dbModel.updateOne({_id},data);
+  }
+  // update query
+  async updateQuery(query:any,data:any){
+    return await this.dbModel.updateOne(query,data);
+  }
+  // hard delete
+  async delete(_id:string){
+    return await this.dbModel.deleteOne({_id});
+  }
+  // count
+  async count(query:any):Promise<number>{
+    return await this.dbModel.countDocuments(query);
+  }
+  close(){
+    this.db?.close();
   }
 }
