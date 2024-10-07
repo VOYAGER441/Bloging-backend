@@ -1,5 +1,20 @@
-import * as BlogInterface from "./blog.interface";
+// import blogInterface from "./blog.interface";
+import {
+  IBlogDB,
+  IBlogCreateDB,
+  IBlogUpdateDB,
+  IBlogResponse,
+  IBlogCreateRequest,
+  IBlogUpdateRequest,
+  IBlogDeleteRequest,
+} from "./blog.interface";
 
-export default{
-    BlogInterface
-}
+export {
+  IBlogDB,
+  IBlogCreateDB,
+  IBlogUpdateDB,
+  IBlogResponse,
+  IBlogCreateRequest,
+  IBlogUpdateRequest,
+  IBlogDeleteRequest,
+};

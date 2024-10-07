@@ -2,7 +2,7 @@ import { Types } from "mongoose";
 // db
 // ###########################
 
-export default interface IBlogDB {
+export  interface IBlogDB {
   title: string;
   content: string;
   authorId: Types.ObjectId;
@@ -16,7 +16,7 @@ export default interface IBlogDB {
   updatedAt: Date;
 }
 
-export default interface IBlogCreateDB {
+export  interface IBlogCreateDB {
   title: string;
   content: string;
   slug: string;
@@ -30,7 +30,7 @@ export default interface IBlogCreateDB {
   updatedAt: Date;
 }
 
-export default interface IBlogUpdateDB {
+export  interface IBlogUpdateDB {
   title: string;
   content: string;
   slug: string;
@@ -60,18 +60,21 @@ export  interface IBlogResponse {
 // Request
 //####################
 
-export default interface IBlogCreateRequest {
+export  interface IBlogCreateRequest {
   title: string;
   content: string;
   tags: string[];
 }
-export default interface IBlogUpdateRequest{
+export  interface IBlogUpdateRequest{
   title: string;
   content: string;
   tags: string[];
   slug:string;
 }
 
-export default interface IBlogDeleteRequest{
+export  interface IBlogDeleteRequest{
   _id:string;
 }
+
+
+

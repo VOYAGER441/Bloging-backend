@@ -8,12 +8,12 @@
 import { Response } from 'express';
 
 // Custom Error Type
-interface AppError {
-  isOperational: boolean;
-  statusCode: number;
-  status: string;
-  message: string;
-}
+// interface AppError {
+//   isOperational: boolean;
+//   statusCode: number;
+//   status: string;
+//   message: string;
+// }
 
 // Error Handler Function
 export const errorHandler = (err: any, res: Response) => {

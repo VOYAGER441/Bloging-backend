@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose";
+import { Schema } from "mongoose";
 import collections from "../collection/collections";
 import Models from "./model";
 
@@ -10,7 +10,7 @@ const BlogSchema=new Schema({
     content:{type:String,required:true},
     authorId:{type:Schema.Types.ObjectId,required:true},
     tags:{type:[String],required:true},
-    slug:{type:String,required:true},
+    slug:{type:String,required:true,unique:true},
     isPublished:{type:Boolean,default:false},
     isDeleted:{type:Boolean,default:false},
     createdBy:{type:Schema.Types.ObjectId,required:true},
@@ -22,10 +22,10 @@ const BlogSchema=new Schema({
 
 
 // Create the actual Mongoose model
-const BlogMongooseModel =  model(collections.COLLECTION_BLOG, BlogSchema);
+// const BlogMongooseModel =  model(collections.COLLECTION_BLOG, BlogSchema);
 
 export default class BlogModel extends Models{
     constructor(){
-        super(BlogMongooseModel);
+        super(collections.COLLECTION_BLOG,BlogSchema);
     }
 }
