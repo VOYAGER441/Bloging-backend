@@ -6,6 +6,7 @@ import services from "../services";
 import utils from "../utils";
 
 import * as Interface from "../interface";
+import middleware from "../middleware";
 
 const route = express.Router();
 route.use(bodyParser.json());
@@ -26,14 +27,24 @@ route.get("/getAll", async (req: Request, res: Response) => {
 });
 
 // route for create blog
-route.post("/create", async (req: Request, res: Response) => {
+route.post("/create",middleware.authMiddleware , async (req: Request, res: Response) => {
   try {
-    const data: Interface.IBlogCreateRequest = req.body;
+console.log('test1');
 
-    await services.blogService.create(data);
+    let userId=req.headers['user-id'];
+    const data: Interface.IBlogCreateRequest = req.body;
+    userId=utils.toString(userId);
+
+    console.log(data);
+    console.log(userId);
+    
+
+    await services.blogService.create(data,userId);
     res.status(utils.HttpStatusCodes.CREATED).json({message:"Blog Create!!"});
   } catch (error) {
-    errorHandler(error, res);
+    // errorHandler(error, res);
+    console.log(error);
+    
   }
 });
 

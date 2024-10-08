@@ -5,6 +5,7 @@ import { Types } from "mongoose";
 export  interface IBlogDB {
   title: string;
   content: string;
+  author:string;
   authorId: Types.ObjectId;
   tags: string[];
   slug: string;
@@ -20,20 +21,22 @@ export  interface IBlogCreateDB {
   title: string;
   content: string;
   slug: string;
+  author:string;
   authorId: Types.ObjectId;
   tags: string[];
   isPublished: boolean;
   isDeleted: boolean;
   createdBy: Types.ObjectId;
   updatedBy: Types.ObjectId;
-  createdAt: Date;
-  updatedAt: Date;
+  // createdAt: Date;
+  // updatedAt: Date;
 }
 
 export  interface IBlogUpdateDB {
   title: string;
   content: string;
   slug: string;
+  author:string;
   authorId: Types.ObjectId;
   tags: string[];
   updatedBy: Types.ObjectId;
@@ -47,6 +50,7 @@ export  interface IBlogResponse {
   title: string;
   content: string;
   slug: string;
+  author:string;
   authorId: string;
   tags: string[];
   isPublished: boolean;
@@ -64,12 +68,14 @@ export  interface IBlogCreateRequest {
   title: string;
   content: string;
   tags: string[];
+  author:string;
 }
 export  interface IBlogUpdateRequest{
   title: string;
   content: string;
   tags: string[];
   slug:string;
+  author:string;
 }
 
 export  interface IBlogDeleteRequest{

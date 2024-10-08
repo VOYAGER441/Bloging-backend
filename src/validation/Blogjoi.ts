@@ -10,7 +10,9 @@ const createBlog = Joi.object({
     title: Joi.string().required(),
     content: Joi.string().required(),
     tags: Joi.required().required(),
+    author:Joi.string().required()
   }),
+  userId:Joi.string().required()
 });
 
 export default {

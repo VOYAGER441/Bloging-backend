@@ -8,6 +8,7 @@ import Models from "./model";
 const BlogSchema=new Schema({
     title:{type:String,required:true},
     content:{type:String,required:true},
+    author:{type:String,default:"Mainak Banduri"},
     authorId:{type:Schema.Types.ObjectId,required:true},
     tags:{type:[String],required:true},
     slug:{type:String,required:true,unique:true},
@@ -21,10 +22,9 @@ const BlogSchema=new Schema({
 
 
 
-// Create the actual Mongoose model
-// const BlogMongooseModel =  model(collections.COLLECTION_BLOG, BlogSchema);
 
 export default class BlogModel extends Models{
+   
     constructor(){
         super(collections.COLLECTION_BLOG,BlogSchema);
     }
