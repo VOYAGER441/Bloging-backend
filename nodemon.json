@@ -7,8 +7,7 @@
   "ignore":["src/**/*.spec.ts"],
   "env": {
     "PORT": "5000",
-    "MONGODB_URI": "mongodb+srv://mainak407:blog@mongodb@cluster0.vxmxn.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
-
+    "MONGODB_URI": "mongodb+srv://mainak407:BlogDb@345@cluster0.vxmxn.mongodb.net/Blog",
     "SYSTEM_API_KEY":"mainak407"
   }
 }

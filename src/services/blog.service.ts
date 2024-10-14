@@ -41,13 +41,13 @@ async function create(createReq: Interface.IBlogCreateRequest, userId: string) {
 
   // let slug = await utils.generateUniqueSlug(title);
   // console.log(slug);
-  
+
   const data: Interface.IBlogCreateDB = {
     title: createReq.title,
     content: createReq.content,
     slug: createReq.title,
     author: createReq.author,
-    authorId: utils.stringToObjectId(createReq.author),
+    authorId: utils.stringToObjectId(userId),
     tags: createReq.tags,
     isPublished: false,
     isDeleted: false,
@@ -55,11 +55,10 @@ async function create(createReq: Interface.IBlogCreateRequest, userId: string) {
     updatedBy: utils.stringToObjectId(userId),
   };
   console.log(data);
-  
 
   let blog = new model.BlogModel();
-
-  let result = await blog.create(data);
+  await blog.init();
+  let result = await blog.getDBModel().create(data);
 
   return result;
 }
