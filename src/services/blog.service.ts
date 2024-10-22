@@ -53,6 +53,10 @@ async function create(createReq: Interface.IBlogCreateRequest, userId: string) {
     isDeleted: false,
     createdBy: utils.stringToObjectId(userId),
     updatedBy: utils.stringToObjectId(userId),
+    isTop: createReq.isTop,
+    popUpText: createReq.popUpText,
+    category: createReq.category,
+    thumbnail: createReq.thumbnail
   };
   console.log(data);
 

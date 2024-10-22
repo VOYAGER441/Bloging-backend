@@ -11,6 +11,10 @@ export  interface IBlogDB {
   slug: string;
   isPublished: boolean;
   isDeleted: boolean;
+  isTop:boolean;
+  popUpText:string;
+  category:string;
+  thumbnail:string;
   createdBy: Types.ObjectId;
   updatedBy: Types.ObjectId;
   createdAt: Date;
@@ -19,13 +23,21 @@ export  interface IBlogDB {
 
 export  interface IBlogCreateDB {
   title: string;
-  content: string;
+  content: {
+    heading:string,
+    subheading:string,
+    detailsContent:string
+  };
   slug: string;
   author:string;
   authorId: Types.ObjectId;
   tags: string[];
   isPublished: boolean;
   isDeleted: boolean;
+  isTop:boolean;
+  popUpText:string;
+  category:string;
+  thumbnail:string;
   createdBy: Types.ObjectId;
   updatedBy: Types.ObjectId;
   // createdAt: Date;
@@ -34,11 +46,19 @@ export  interface IBlogCreateDB {
 
 export  interface IBlogUpdateDB {
   title: string;
-  content: string;
+  content: {
+    heading:string,
+    subheading:string,
+    detailsContent:string
+  };
   slug: string;
   author:string;
   authorId: Types.ObjectId;
   tags: string[];
+  isTop:boolean;
+  popUpText:string;
+  category:string;
+  thumbnail:string;
   updatedBy: Types.ObjectId;
   updatedAt: Date;
 }
@@ -48,13 +68,21 @@ export  interface IBlogUpdateDB {
 export  interface IBlogResponse {
   _id: string;
   title: string;
-  content: string;
+  content: {
+    heading:string,
+    subheading:string,
+    detailsContent:string
+  };
   slug: string;
   author:string;
   authorId: string;
   tags: string[];
   isPublished: boolean;
   isDeleted: boolean;
+  isTop:boolean;
+  popUpText:string;
+  category:string;
+  thumbnail:string;
   createdBy: string;
   updatedBy: string;
   createdAt: Date;
@@ -66,16 +94,32 @@ export  interface IBlogResponse {
 
 export  interface IBlogCreateRequest {
   title: string;
-  content: string;
+  content: {
+    heading:string,
+    subheading:string,
+    detailsContent:string
+  };
   tags: string[];
   author:string;
+  isTop:boolean;
+  popUpText:string;
+  category:string;
+  thumbnail:string;
 }
 export  interface IBlogUpdateRequest{
   title: string;
-  content: string;
+  content: {
+    heading:string,
+    subheading:string,
+    detailsContent:string
+  };
   tags: string[];
   slug:string;
   author:string;
+  isTop:boolean;
+  popUpText:string;
+  category:string;
+  thumbnail:string;
 }
 
 export  interface IBlogDeleteRequest{
