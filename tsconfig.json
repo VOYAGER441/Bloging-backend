@@ -10,6 +10,7 @@
     "skipLibCheck": true,                      // Skip type checking of declaration files
     "forceConsistentCasingInFileNames": true,  // Disallow inconsistently-cased references to the same file
     "noImplicitAny": true,                     // Raise error on expressions and declarations with an implied any type
+    
     "noUnusedLocals": true,                    // Report errors on unused locals
     "noUnusedParameters": true,                // Report errors on unused parameters
     "resolveJsonModule": true,                 // Allows importing .json files
@@ -19,6 +20,7 @@
       "@/": ["./src/"]                         // Add aliasing for paths (optional)
     }
   },
- "include": ["src/**/*.ts"],                     // Include all TypeScript files under 'src' directory
-  "exclude": ["node_modules", "dist"]          // Exclude node_modules and dist from compilation
+  "include": [
+    "src/**/*"],
+  "exclude": ["node_modules", "dist"]
 }
