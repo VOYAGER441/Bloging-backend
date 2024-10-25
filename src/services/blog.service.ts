@@ -5,12 +5,14 @@ import * as Interface from "../interface";
 // import error from "../error";
 import model from "../model";
 import utils from "../utils";
+import blogJoi from "../validation/blogJoi";
 // import utils from "../utils";
-import validation from "../validation";
+// import validation from "../validation";
+
 
 async function getAllBlogPub(skip: number, limit: number) {
   // Here use joi library to validate value
-  const { error } = validation.blogJoi.getAllBlogPub.validate({
+  const { error } = blogJoi.getAllBlogPub.validate({
     skip,
     limit,
   });
@@ -30,7 +32,7 @@ async function getAllBlogPub(skip: number, limit: number) {
 
 // function for create blog
 async function create(createReq: Interface.IBlogCreateRequest, userId: string) {
-  const { error } = validation.blogJoi.createBlog.validate({
+  const { error } = blogJoi.createBlog.validate({
     createReq,
     userId,
   });
@@ -71,7 +73,7 @@ async function create(createReq: Interface.IBlogCreateRequest, userId: string) {
 // function for check admin
 async function checkAdmin(userName: string, password: string) {
   // Here use joi library to validate value
-  const { error } = validation.blogJoi.checkAdmin.validate({
+  const { error } = blogJoi.checkAdmin.validate({
     userName,
     password,
   });
