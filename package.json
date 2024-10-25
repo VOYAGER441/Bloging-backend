@@ -1,13 +1,16 @@
 {
   "name": "blog-backend",
   "version": "1.0.0",
-  "type": "module",
-  "main": "dist/app.js",
+  "main": "src/app.js",
   "scripts": {
-    "start": "node ./dist/app.js",
+    "start": "node  ./src/app.ts",
     "dev": "nodemon -r dotenv/config ./src/app.ts",
-    "build": "tsc"
+    "build": "tsc -p ."
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
   "dependencies": {
     "body-parser": "^1.20.3",
     "cors": "^2.8.5",
@@ -22,9 +25,10 @@
     "@types/express": "^5.0.0",
     "@types/node": "^22.7.4",
     "@types/uuid": "^10.0.0",
+    "install": "^0.13.0",
     "nodemon": "^3.1.7",
+    "npm": "^10.9.0",
     "ts-node": "^10.9.2",
-    "ts-node-dev": "^2.0.0",
-    "typescript": "^5.x"
+    "ts-node-dev": "^2.0.0"
   }
 }
