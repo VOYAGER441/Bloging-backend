@@ -1,4 +1,3 @@
-// server.js
 import express from 'express';
 import routes from './routes';
 const cors = require('cors');
