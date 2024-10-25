@@ -4,7 +4,9 @@ import { ObjectId } from "mongodb";
 // import { ObjectIdLike } from "bson";
 
 const SYSTEM_API_KEY = process.env.SYSTEM_API_KEY || uuid();
-console.log(SYSTEM_API_KEY);
+// console.log(SYSTEM_API_KEY);
+
+const ADMIN_NAME="admin";
 
 export enum HttpStatusCodes {
   OK = 200,
@@ -43,4 +45,5 @@ export default {
   toString,
   generateUniqueSlug,
   stringToObjectId,
+  ADMIN_NAME
 };

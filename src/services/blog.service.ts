@@ -67,7 +67,34 @@ async function create(createReq: Interface.IBlogCreateRequest, userId: string) {
   return result;
 }
 
+
+// function for check admin
+async function checkAdmin(userName: string, password: string) {
+  // Here use joi library to validate value
+  const { error } = validation.blogJoi.checkAdmin.validate({
+    userName,
+    password,
+  });
+
+  // Throwing a validation error
+  if (error) {
+    throw new Error(error.details[0].message);
+  }
+
+  // console.log(utils.ADMIN_NAME,utils.SYSTEM_API_KEY);
+  
+
+  if(userName===utils.ADMIN_NAME&&password===utils.SYSTEM_API_KEY){
+    return true;
+  }
+  else{
+    return false;
+  }
+  
+}
+
 export default {
   getAllBlogPub,
   create,
+  checkAdmin
 };

@@ -1,8 +1,9 @@
 import mongoose from "mongoose";
 
 const MONGODB_URI = process.env.MONGODB_URI || "";
-console.log(MONGODB_URI);
+// console.log(MONGODB_URI);
 
+/* "mongodb+srv://mainak407:BlogDb%40345@cluster0.vxmxn.mongodb.net/Blog" */ 
 export default class DATABASE {
   connection: mongoose.Connection | undefined;
 
@@ -12,7 +13,7 @@ export default class DATABASE {
     if (mongoose.connection.readyState != 1) {
       if (process.env.NODE_ENV == "dev")
         console.log("😎 connecting to the DATABASE... 🤘");
-      await mongoose.connect("mongodb+srv://mainak407:BlogDb%40345@cluster0.vxmxn.mongodb.net/Blog" )
+      await mongoose.connect(MONGODB_URI)
         .catch(err => {
           console.error("MongoDB connection error:", err);
         });

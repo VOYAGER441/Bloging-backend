@@ -6,7 +6,7 @@ import services from "../services";
 import utils from "../utils";
 
 import * as Interface from "../interface";
-import middleware from "../middleware";
+// import middleware from "../middleware";
 
 const route = express.Router();
 route.use(bodyParser.json());
@@ -27,7 +27,7 @@ route.get("/getAll", async (req: Request, res: Response) => {
 });
 
 // route for create blog
-route.post("/create",middleware.authMiddleware , async (req: Request, res: Response) => {
+route.post("/create",/* middleware.authMiddleware ,*/  async (req: Request, res: Response) => {
   try {
 console.log('test1');
 
@@ -47,5 +47,22 @@ console.log('test1');
     
   }
 });
+
+route.get("/check", async (req: Request, res: Response) => {
+  try {
+    let userName: string = String(req.query.userName);
+    const password: string = String(req.query.password);
+    // const limit: number = Number(req.query.limit);
+
+    // console.log(skip, limit);
+    userName=userName.toLowerCase()
+    const result = await services.blogService.checkAdmin(userName, password);
+    res.status(utils.HttpStatusCodes.OK).json(result);
+  } catch (error) {
+    console.error(error);
+    
+  }
+});
+
 
 export { route as BlogRoute };

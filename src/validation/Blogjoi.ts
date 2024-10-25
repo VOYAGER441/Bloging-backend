@@ -4,6 +4,10 @@ const getAllBlogPub = Joi.object({
   skip: Joi.number().required().min(0),
   limit: Joi.number().required().max(100),
 });
+const checkAdmin = Joi.object({
+  userName: Joi.string().required(),
+  password: Joi.string().required(),
+});
 
 const createBlog = Joi.object({
   createReq: Joi.object({
@@ -18,4 +22,5 @@ const createBlog = Joi.object({
 export default {
   getAllBlogPub,
   createBlog,
+  checkAdmin
 };
