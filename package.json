@@ -2,6 +2,7 @@
   "name": "blog-backend",
   "version": "1.0.0",
   "main": "src/app.js",
+  "type":"module",
   "scripts": {
     "start": "node ./src/app.ts",
     "dev": "nodemon -r dotenv/config ./src/app.ts",
