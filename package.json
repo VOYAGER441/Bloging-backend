@@ -5,7 +5,7 @@
   "scripts": {
     "start": "nodemon -r dotenv/config ./src/app.ts",
     "dev": "nodemon -r dotenv/config ./src/app.ts",
-    "build": "netlify deploy --prod"
+    "build": "tsc -p ."
   },
   "keywords": [],
   "author": "",
@@ -41,3 +41,4 @@
     "ts-node-dev": "^2.0.0"
   }
 }
+
