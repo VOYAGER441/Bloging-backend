@@ -38,3 +38,6 @@ next-env.d.ts
 
 # Ignore compiled output
 
+
+# Local Netlify folder
+.netlify
