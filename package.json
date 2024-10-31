@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "src/app.js",
   "scripts": {
-    "start": "nodemon -r dotenv/config ./src/app.ts",
+    "start": "node ./dist/app.cjs",
     "dev": "nodemon -r dotenv/config ./src/app.ts",
     "build": "tsc -p ."
   },
