@@ -12,23 +12,15 @@ const checkAdmin = Joi.object({
 const createBlog = Joi.object({
   createReq: Joi.object({
     title: Joi.string().required(),
-    content: Joi.object({
-      heading: Joi.string().required(),
-      subheading: Joi.string().required(),
-      detailsContent: Joi.string().required(),
-    }).required(),
-    tags: Joi.array().items(Joi.string()).required(),
-    author: Joi.string().required(),
-    isTop: Joi.boolean().required(),
-    popUpText: Joi.string().required(),
-    category: Joi.string().required(),
-    thumbnail: Joi.string().required(),
+    content: Joi.string().required(),
+    tags: Joi.required().required(),
+    author:Joi.string().required()
   }),
-  userId: Joi.string().required(),
+  userId:Joi.string().required()
 });
 
 export default {
   getAllBlogPub,
   createBlog,
-  checkAdmin,
+  checkAdmin
 };

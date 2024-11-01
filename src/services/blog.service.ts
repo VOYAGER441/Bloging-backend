@@ -1,6 +1,5 @@
 // import Interface from "../interface/index";
 // import { title } from "process";
-// import blogJoi from "src/validation/blogJoi";
 import * as Interface from "../interface";
 // import Interface from "../interface";
 // import error from "../error";
@@ -8,20 +7,20 @@ import model from "../model";
 import utils from "../utils";
 // import blogJoi from "../validation/blogJoi";
 // import utils from "../utils";
-import validation from "../validation";
+// import validation from "../validation";
 
 
 async function getAllBlogPub(skip: number, limit: number) {
   // Here use joi library to validate value
-  const { error } = validation.blogJoi.getAllBlogPub.validate({
-    skip,
-    limit,
-  });
+  // const { error } = blogJoi.getAllBlogPub.validate({
+  //   skip,
+  //   limit,
+  // });
 
   // // Throwing a validation error
-  if (error) {
-    throw new Error(error.details[0].message);
-  }
+  // if (error) {
+  //   throw new Error(error.details[0].message);
+  // }
 
   // call the mongo model and init it
   const blogModel = new model.BlogModel();
@@ -33,14 +32,14 @@ async function getAllBlogPub(skip: number, limit: number) {
 
 // function for create blog
 async function create(createReq: Interface.IBlogCreateRequest, userId: string) {
-  const { error } =  validation.blogJoi.createBlog.validate({
-    createReq,
-    userId,
-  });
+  // const { error } = blogJoi.createBlog.validate({
+  //   createReq,
+  //   userId,
+  // });
 
-  if (error) {
-    throw new Error(error.details[0].message);
-  }
+  // if (error) {
+  //   throw new Error(error.details[0].message);
+  // }
 
   // let slug = await utils.generateUniqueSlug(title);
   // console.log(slug);
@@ -74,15 +73,15 @@ async function create(createReq: Interface.IBlogCreateRequest, userId: string) {
 // function for check admin
 async function checkAdmin(userName: string, password: string) {
   // Here use joi library to validate value
-  const { error } =  validation.blogJoi.checkAdmin.validate({
-    userName,
-    password,
-  });
+  // const { error } = blogJoi.checkAdmin.validate({
+  //   userName,
+  //   password,
+  // });
 
-  // Throwing a validation error
-  if (error) {
-    throw new Error(error.details[0].message);
-  }
+  // // Throwing a validation error
+  // if (error) {
+  //   throw new Error(error.details[0].message);
+  // }
 
   // console.log(utils.ADMIN_NAME,utils.SYSTEM_API_KEY);
   
