@@ -6,7 +6,7 @@ export  interface IBlogDB {
   title: string;
   content: string;
   author:string;
-  authorId: Types.ObjectId;
+  // authorId: Types.ObjectId;
   tags: string[];
   slug: string;
   isPublished: boolean;
@@ -15,8 +15,8 @@ export  interface IBlogDB {
   popUpText:string;
   category:string;
   thumbnail:string;
-  createdBy: Types.ObjectId;
-  updatedBy: Types.ObjectId;
+  // createdBy: Types.ObjectId;
+  // updatedBy: Types.ObjectId;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -30,7 +30,7 @@ export  interface IBlogCreateDB {
   };
   slug: string;
   author:string;
-  authorId: Types.ObjectId;
+  // authorId: Types.ObjectId;
   tags: string[];
   isPublished: boolean;
   isDeleted: boolean;
@@ -38,8 +38,8 @@ export  interface IBlogCreateDB {
   popUpText:string;
   category:string;
   thumbnail:string;
-  createdBy: Types.ObjectId;
-  updatedBy: Types.ObjectId;
+  // createdBy: Types.ObjectId;
+  // updatedBy: Types.ObjectId;
   // createdAt: Date;
   // updatedAt: Date;
 }
@@ -53,13 +53,13 @@ export  interface IBlogUpdateDB {
   };
   slug: string;
   author:string;
-  authorId: Types.ObjectId;
+  // authorId: Types.ObjectId;
   tags: string[];
   isTop:boolean;
   popUpText:string;
   category:string;
   thumbnail:string;
-  updatedBy: Types.ObjectId;
+  // updatedBy: Types.ObjectId;
   updatedAt: Date;
 }
 
@@ -75,7 +75,7 @@ export  interface IBlogResponse {
   };
   slug: string;
   author:string;
-  authorId: string;
+  // authorId: string;
   tags: string[];
   isPublished: boolean;
   isDeleted: boolean;
@@ -83,8 +83,8 @@ export  interface IBlogResponse {
   popUpText:string;
   category:string;
   thumbnail:string;
-  createdBy: string;
-  updatedBy: string;
+  // createdBy: string;
+  // updatedBy: string;
   createdAt: Date;
   updatedAt: Date;
 }

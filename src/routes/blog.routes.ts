@@ -31,15 +31,15 @@ route.post("/create",/* middleware.authMiddleware ,*/  async (req: Request, res:
   try {
 console.log('test1');
 
-    let userId=req.headers['user-id'];
+    // let userId=req.headers['user-id'];
     const data: Interface.IBlogCreateRequest = req.body;
-    userId=utils.toString(userId);
+    // userId=utils.toString(userId);
 
     console.log(data);
-    console.log(userId);
+    // console.log(userId);
     
 
-    await services.blogService.create(data,userId);
+    await services.blogService.create(data);
     res.status(utils.HttpStatusCodes.CREATED).json({message:"Blog Create!!"});
   } catch (error) {
     // errorHandler(error, res);

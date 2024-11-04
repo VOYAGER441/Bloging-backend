@@ -13,13 +13,14 @@ const createSlug = (title: string): string => {
 const generateUniqueSlug = async (title: string): Promise<string> => {
     // Generate the base slug from the title
 
-    let blog=new model.BlogModel();
-
-
+    
+    
     let slug = createSlug(title);
+    let blog=new model.BlogModel();
+    await blog.init();
 
     // Check if slug exists in the database
-    let slugExists = await blog.find({ slug:slug },{slug:1});
+    let slugExists = await blog.findOne({ slug:slug },{slug:1});
 
     // If slug exists, add a unique suffix
     let suffix = 1;

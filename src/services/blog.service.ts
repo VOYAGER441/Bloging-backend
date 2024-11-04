@@ -31,7 +31,7 @@ async function getAllBlogPub(skip: number, limit: number) {
 }
 
 // function for create blog
-async function create(createReq: Interface.IBlogCreateRequest, userId: string) {
+async function create(createReq: Interface.IBlogCreateRequest) {
   // const { error } = blogJoi.createBlog.validate({
   //   createReq,
   //   userId,
@@ -41,20 +41,20 @@ async function create(createReq: Interface.IBlogCreateRequest, userId: string) {
   //   throw new Error(error.details[0].message);
   // }
 
-  // let slug = await utils.generateUniqueSlug(title);
-  // console.log(slug);
+  let slug = await utils.generateUniqueSlug(createReq.title);
+  console.log(slug);
 
   const data: Interface.IBlogCreateDB = {
     title: createReq.title,
     content: createReq.content,
-    slug: createReq.title,
+    slug: slug,
     author: createReq.author,
-    authorId: utils.stringToObjectId(userId),
+    // authorId: utils.stringToObjectId(userId),
     tags: createReq.tags,
     isPublished: false,
     isDeleted: false,
-    createdBy: utils.stringToObjectId(userId),
-    updatedBy: utils.stringToObjectId(userId),
+    // createdBy: utils.stringToObjectId(userId),
+    // updatedBy: utils.stringToObjectId(userId),
     isTop: createReq.isTop,
     popUpText: createReq.popUpText,
     category: createReq.category,
