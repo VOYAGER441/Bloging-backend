@@ -24,9 +24,9 @@ async function getAllBlogPub(skip: number, limit: number) {
 
   // call the mongo model and init it
   const blogModel = new model.BlogModel();
-  blogModel.init();
+  await blogModel.init();
 
-  let result = await blogModel.getDBModel().find().skip(skip).limit(limit);
+  let result = await blogModel.getDBModel().find({isDeleted:false}).skip(skip).limit(limit);
   return result;
 }
 
@@ -95,8 +95,34 @@ async function checkAdmin(userName: string, password: string) {
   
 }
 
+// function for get only top blog
+async function getTopBlog(skip: number, limit: number) {
+  // Here use joi library to validate value
+  // const { error } = blogJoi.getAllBlogPub.validate({
+  //   skip,
+  //   limit,
+  // });
+
+  // // Throwing a validation error
+  // if (error) {
+  //   throw new Error(error.details[0].message);
+  // }
+
+  // call the mongo model and init it
+  const blogModel = new model.BlogModel();
+  await blogModel.init();
+  let query={isTop:true,isDeleted:false}
+  let result = await blogModel.getDBModel().find(query).skip(skip).limit(limit);
+  return result;
+}
+
+
+
+
+
 export default {
   getAllBlogPub,
   create,
-  checkAdmin
+  checkAdmin,
+  getTopBlog
 };

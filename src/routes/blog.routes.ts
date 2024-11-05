@@ -64,5 +64,19 @@ route.get("/check", async (req: Request, res: Response) => {
   }
 });
 
+// route for filter out the top blogs
+route.get('/top',async(req:Request,res:Response)=>{
+  try {
+    const skip: number = Number(req.query.skip);
+    const limit: number = Number(req.query.limit);
+
+    // console.log(skip, limit);
+    const result = await services.blogService.getTopBlog(skip, limit);
+    res.status(utils.HttpStatusCodes.OK).json(result);
+  } catch (error) {
+    console.error(error);
+    errorHandler(error, res);
+  }
+});
 
 export { route as BlogRoute };
