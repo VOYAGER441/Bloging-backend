@@ -24,7 +24,7 @@ async function getAllBlogPub(skip: number, limit: number) {
 
   // call the mongo model and init it
   const blogModel = new model.BlogModel();
-  await blogModel.init();
+   blogModel.init();
 
   let result = await blogModel.getDBModel().find({isDeleted:false}).skip(skip).limit(limit);
   return result;
@@ -110,7 +110,7 @@ async function getTopBlog(skip: number, limit: number) {
 
   // call the mongo model and init it
   const blogModel = new model.BlogModel();
-  await blogModel.init();
+   blogModel.init();
   let query={isTop:true,isDeleted:false}
   let result = await blogModel.getDBModel().find(query).skip(skip).limit(limit);
   return result;
