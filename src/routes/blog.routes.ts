@@ -57,7 +57,7 @@ route.get("/check", async (req: Request, res: Response) => {
     // console.log(skip, limit);
     userName=userName.toLowerCase()
     const result = await services.blogService.checkAdmin(userName, password);
-    res.status(utils.HttpStatusCodes.OK).json(result);
+    res.status(utils.HttpStatusCodes.CREATED).json(result);
   } catch (error) {
     console.error(error);
     
@@ -78,5 +78,24 @@ route.get('/top',async(req:Request,res:Response)=>{
     errorHandler(error, res);
   }
 });
+
+// route for get data by slug
+route.get('/slug/:slug',async(req:Request,res:Response)=>{
+  try {
+    // const skip: number = Number(req.query.skip);
+    // const limit: number = Number(req.query.limit);
+
+    const slug:string=String(req.params.slug);
+
+    // console.log(skip, limit);
+    // const result = await services.blogService.getTopBlog(skip, limit);
+    const result = await services.blogService.getDataBySlug(slug);
+    res.status(utils.HttpStatusCodes.OK).json(result);
+  } catch (error) {
+    console.error(error);
+    errorHandler(error, res);
+  }
+});
+
 
 export { route as BlogRoute };

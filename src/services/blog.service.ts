@@ -114,9 +114,29 @@ async function getTopBlog(skip: number, limit: number) {
   let query={isTop:true,isDeleted:false}
   let result = await blogModel.getDBModel().find(query).skip(skip).limit(limit);
   return result;
+};
+
+
+// function for get blog data by slug;
+async function getDataBySlug(slug:string) {
+   // Here use joi library to validate value
+  // const { error } = blogJoi.getAllBlogPub.validate({
+  //   skip,
+  //   limit,
+  // });
+
+  // // Throwing a validation error
+  // if (error) {
+  //   throw new Error(error.details[0].message);
+  // }
+
+  // call the mongo model and init it
+  const blogModel = new model.BlogModel();
+   blogModel.init();
+  let query={slug:slug,isDeleted:false}
+  let result = await blogModel.getDBModel().findOne(query);
+  return result;
 }
-
-
 
 
 
@@ -124,5 +144,6 @@ export default {
   getAllBlogPub,
   create,
   checkAdmin,
-  getTopBlog
+  getTopBlog,
+  getDataBySlug,
 };
