@@ -140,6 +140,54 @@ async function getDataBySlug(slug:string) {
 }
 
 
+// function for search engine 
+// async function search(value:string) {
+//   // const { error } = blogJoi.search.validate({ searchTerm });
+//     // if (error) {
+//     //   throw new Error(error.details[0].message);
+//     // }
+// console.log(value);
+
+//     const blogModel = new model.BlogModel();
+//     blogModel.init();
+
+    
+//     const query = {
+//       isDeleted: false,
+//       $or: [
+//         { title: { $regex: value, $options: 'i' } },
+//         { content: { $regex: value, $options: 'i' } },
+//         { tags: { $elemMatch: { $regex: value, $options: 'i' } } }
+//       ]
+//     };
+//     const results = await blogModel.getDBModel().find(query);
+
+//     return results;
+// }
+async function search(value: string) {
+  try {
+    // console.log("Search term:", value);
+    const blogModel = new model.BlogModel();
+    blogModel.init();
+
+    const query = {
+      isDeleted: false,
+      $or: [
+        { title: { $regex: value, $options: 'i' } },
+        // { content: { $regex: value, $options: 'i' } },
+        { "content.heading": { $regex: value, $options: 'i' } },
+        { tags: { $elemMatch: { $regex: value, $options: 'i' } } }
+      ]
+    };
+
+    const results = await blogModel.getDBModel().find(query);
+    return results;
+  } catch (error) {
+    console.error("Error during search:", error);
+    throw new Error("Failed to execute search query");
+  }
+}
+
 
 export default {
   getAllBlogPub,
@@ -147,4 +195,5 @@ export default {
   checkAdmin,
   getTopBlog,
   getDataBySlug,
+  search
 };

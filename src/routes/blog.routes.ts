@@ -97,5 +97,22 @@ route.get('/slug/:slug',async(req:Request,res:Response)=>{
   }
 });
 
+route.get('/search/:search',async(req:Request,res:Response)=>{
+  try {
+    // const skip: number = Number(req.query.skip);
+    // const limit: number = Number(req.query.limit);
+
+    const search:string=String(req.params.search);
+
+    // console.log(skip, limit);
+    // const result = await services.blogService.getTopBlog(skip, limit);
+    const result = await services.blogService.search(search);
+    res.status(utils.HttpStatusCodes.OK).json(result);
+  } catch (error) {
+    console.error(error);
+    errorHandler(error, res);
+  }
+});
+
 
 export { route as BlogRoute };
