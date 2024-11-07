@@ -8,9 +8,9 @@ app.use(cors())
 const PORT = process.env.PORT || 5001;
 
 // Basic route using the router
-// router.get('/', (_req, res) => {
-//     res.send('Hello World!');
-// });
+app.get('/', (_req: any, res: { send: (arg0: string) => void; }) => {
+    res.send('This is the Bit By Bits Backend server ');
+});
 
 // Use the router in the app
 app.use('/Blog',routes.BlogRoute );
