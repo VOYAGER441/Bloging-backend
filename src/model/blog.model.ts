@@ -19,6 +19,7 @@ const BlogSchema = new Schema(
     author: { type: String, default: "Mainak Banduri" },
     // authorId: { type: Schema.Types.ObjectId, required: true },
     tags: { type: [String], required: true },
+    links: { type: [String], required: true },
     slug: { type: String, required: true, unique: true },
     isPublished: { type: Boolean, default: false },
     isDeleted: { type: Boolean, default: false },

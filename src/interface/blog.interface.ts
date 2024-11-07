@@ -8,6 +8,7 @@ export  interface IBlogDB {
   author:string;
   // authorId: Types.ObjectId;
   tags: string[];
+  links: string[];
   slug: string;
   isPublished: boolean;
   isDeleted: boolean;
@@ -32,6 +33,7 @@ export  interface IBlogCreateDB {
   author:string;
   // authorId: Types.ObjectId;
   tags: string[];
+  links: string[];
   isPublished: boolean;
   isDeleted: boolean;
   isTop:boolean;
@@ -55,6 +57,7 @@ export  interface IBlogUpdateDB {
   author:string;
   // authorId: Types.ObjectId;
   tags: string[];
+  links: string[];
   isTop:boolean;
   popUpText:string;
   category:string;
@@ -77,6 +80,7 @@ export  interface IBlogResponse {
   author:string;
   // authorId: string;
   tags: string[];
+  links: string[];
   isPublished: boolean;
   isDeleted: boolean;
   isTop:boolean;
@@ -100,6 +104,7 @@ export  interface IBlogCreateRequest {
     detailsContent:string
   };
   tags: string[];
+  links: string[];
   author:string;
   isTop:boolean;
   popUpText:string;
@@ -114,6 +119,7 @@ export  interface IBlogUpdateRequest{
     detailsContent:string
   };
   tags: string[];
+  links: string[];
   slug:string;
   author:string;
   isTop:boolean;

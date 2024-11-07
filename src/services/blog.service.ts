@@ -58,7 +58,8 @@ async function create(createReq: Interface.IBlogCreateRequest) {
     isTop: createReq.isTop,
     popUpText: createReq.popUpText,
     category: createReq.category,
-    thumbnail: createReq.thumbnail
+    thumbnail: createReq.thumbnail,
+    links: createReq.links
   };
   console.log(data);
 
